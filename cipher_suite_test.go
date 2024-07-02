@@ -8,8 +8,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/pion/dtls/v2/internal/ciphersuite"
-	dtlsnet "github.com/pion/dtls/v2/pkg/net"
+	"github.com/censys-oss/dtls/v2/internal/ciphersuite"
+	dtlsnet "github.com/censys-oss/dtls/v2/pkg/net"
 	"github.com/pion/transport/v3/dpipe"
 	"github.com/pion/transport/v3/test"
 )

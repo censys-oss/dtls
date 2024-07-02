@@ -10,13 +10,13 @@ import (
 	"testing"
 	"time"
 
-	"github.com/pion/dtls/v2/internal/ciphersuite"
-	"github.com/pion/dtls/v2/pkg/crypto/elliptic"
-	"github.com/pion/dtls/v2/pkg/crypto/selfsign"
-	"github.com/pion/dtls/v2/pkg/crypto/signaturehash"
-	"github.com/pion/dtls/v2/pkg/protocol/alert"
-	"github.com/pion/dtls/v2/pkg/protocol/handshake"
 	"github.com/pion/transport/v3/test"
+	"github.com/censys-oss/dtls/v2/internal/ciphersuite"
+	"github.com/censys-oss/dtls/v2/pkg/crypto/elliptic"
+	"github.com/censys-oss/dtls/v2/pkg/crypto/selfsign"
+	"github.com/censys-oss/dtls/v2/pkg/crypto/signaturehash"
+	"github.com/censys-oss/dtls/v2/pkg/protocol/alert"
+	"github.com/censys-oss/dtls/v2/pkg/protocol/handshake"
 )
 
 type flight4TestMockFlightConn struct{}
