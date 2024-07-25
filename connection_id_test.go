@@ -7,10 +7,10 @@ import (
 	"testing"
 	"time"
 
-	"github.com/pion/dtls/v2/pkg/protocol"
-	"github.com/pion/dtls/v2/pkg/protocol/extension"
-	"github.com/pion/dtls/v2/pkg/protocol/handshake"
-	"github.com/pion/dtls/v2/pkg/protocol/recordlayer"
+	"github.com/censys-oss/dtls/v2/pkg/protocol"
+	"github.com/censys-oss/dtls/v2/pkg/protocol/extension"
+	"github.com/censys-oss/dtls/v2/pkg/protocol/handshake"
+	"github.com/censys-oss/dtls/v2/pkg/protocol/recordlayer"
 )
 
 func TestRandomConnectionIDGenerator(t *testing.T) {

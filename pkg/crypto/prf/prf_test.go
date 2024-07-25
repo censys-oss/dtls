@@ -9,7 +9,7 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/pion/dtls/v2/pkg/crypto/elliptic"
+	"github.com/censys-oss/dtls/v2/pkg/crypto/elliptic"
 )
 
 func TestPreMasterSecret(t *testing.T) {

@@ -10,8 +10,8 @@ import (
 	"net"
 	"time"
 
-	"github.com/pion/dtls/v2"
-	"github.com/pion/dtls/v2/examples/util"
+	"github.com/censys-oss/dtls/v2"
+	"github.com/censys-oss/dtls/v2/examples/util"
 )
 
 func main() {

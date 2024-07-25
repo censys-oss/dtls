@@ -6,11 +6,11 @@ package dtls
 import (
 	"context"
 	"math/rand"
+	"net"
 	"testing"
 	"time"
 
 	"github.com/pion/dtls/v2/pkg/crypto/elliptic"
-	dtlsnet "github.com/pion/dtls/v2/pkg/net"
 	"github.com/pion/dtls/v2/pkg/protocol/extension"
 	"github.com/pion/dtls/v2/pkg/protocol/handshake"
 	"github.com/pion/dtls/v2/pkg/protocol/recordlayer"
@@ -78,7 +78,7 @@ func TestSupportedEllipticCurves(t *testing.T) {
 			EllipticCurves: expectedCurves,
 		}
 
-		if client, err := testClient(ctx, dtlsnet.PacketConnFromConn(caAnalyzer), caAnalyzer.RemoteAddr(), conf, false); err != nil {
+		if client, err := testClient(ctx, net.PacketConnFromConn(caAnalyzer), caAnalyzer.RemoteAddr(), conf, false); err != nil {
 			clientErr <- err
 		} else {
 			clientErr <- client.Close() //nolint
@@ -89,7 +89,7 @@ func TestSupportedEllipticCurves(t *testing.T) {
 		CipherSuites: []CipherSuiteID{TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256},
 	}
 
-	if server, err := testServer(ctx, dtlsnet.PacketConnFromConn(cb), cb.RemoteAddr(), config, true); err != nil {
+	if server, err := testServer(ctx, net.PacketConnFromConn(cb), cb.RemoteAddr(), config, true); err != nil {
 		t.Fatalf("Server error %v", err)
 	} else {
 		if err = server.Close(); err != nil {

@@ -13,9 +13,9 @@ import (
 	"io"
 	"time"
 
-	"github.com/pion/dtls/v2/pkg/crypto/elliptic"
-	"github.com/pion/dtls/v2/pkg/protocol/handshake"
 	"github.com/pion/logging"
+	"github.com/censys-oss/dtls/v2/pkg/crypto/elliptic"
+	"github.com/censys-oss/dtls/v2/pkg/protocol/handshake"
 )
 
 const keyLogLabelTLS12 = "CLIENT_RANDOM"

@@ -3,7 +3,7 @@
 
 package dtls
 
-import "github.com/pion/dtls/v2/pkg/protocol"
+import "github.com/censys-oss/dtls/v2/pkg/protocol"
 
 func defaultCompressionMethods() []*protocol.CompressionMethod {
 	return []*protocol.CompressionMethod{

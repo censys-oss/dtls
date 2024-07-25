@@ -8,19 +8,20 @@ import (
 	"crypto/rand"
 	"crypto/x509"
 
-	"github.com/pion/dtls/v2/internal/ciphersuite"
-	"github.com/pion/dtls/v2/pkg/crypto/clientcertificate"
-	"github.com/pion/dtls/v2/pkg/crypto/elliptic"
-	"github.com/pion/dtls/v2/pkg/crypto/prf"
-	"github.com/pion/dtls/v2/pkg/crypto/signaturehash"
-	"github.com/pion/dtls/v2/pkg/protocol"
-	"github.com/pion/dtls/v2/pkg/protocol/alert"
-	"github.com/pion/dtls/v2/pkg/protocol/extension"
-	"github.com/pion/dtls/v2/pkg/protocol/handshake"
-	"github.com/pion/dtls/v2/pkg/protocol/recordlayer"
+	"github.com/censys-oss/dtls/v2/internal/ciphersuite"
+	"github.com/censys-oss/dtls/v2/pkg/crypto/clientcertificate"
+	"github.com/censys-oss/dtls/v2/pkg/crypto/elliptic"
+	"github.com/censys-oss/dtls/v2/pkg/crypto/prf"
+	"github.com/censys-oss/dtls/v2/pkg/crypto/signaturehash"
+	"github.com/censys-oss/dtls/v2/pkg/protocol"
+	"github.com/censys-oss/dtls/v2/pkg/protocol/alert"
+	"github.com/censys-oss/dtls/v2/pkg/protocol/extension"
+	"github.com/censys-oss/dtls/v2/pkg/protocol/handshake"
+	"github.com/censys-oss/dtls/v2/pkg/protocol/recordlayer"
 )
 
-func flight4Parse(ctx context.Context, c flightConn, state *State, cache *handshakeCache, cfg *handshakeConfig) (flightVal, *alert.Alert, error) { //nolint:gocognit
+func flight4Parse( //nolint:gocognit
+	ctx context.Context, c flightConn, state *State, cache *handshakeCache, cfg *handshakeConfig) (flightVal, *alert.Alert, error) {
 	seq, msgs, ok := cache.fullPullMap(state.handshakeRecvSequence, state.cipherSuite,
 		handshakeCachePullRule{handshake.TypeCertificate, cfg.initialEpoch, true, true},
 		handshakeCachePullRule{handshake.TypeClientKeyExchange, cfg.initialEpoch, true, false},
