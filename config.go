@@ -13,9 +13,9 @@ import (
 	"io"
 	"time"
 
-	"github.com/pion/logging"
 	"github.com/censys-oss/dtls/v2/pkg/crypto/elliptic"
 	"github.com/censys-oss/dtls/v2/pkg/protocol/handshake"
+	"github.com/pion/logging"
 )
 
 const keyLogLabelTLS12 = "CLIENT_RANDOM"
@@ -236,7 +236,11 @@ func (c *Config) includeCertificateSuites() bool {
 
 const defaultMTU = 1200 // bytes
 
-var defaultCurves = []elliptic.Curve{elliptic.X25519, elliptic.P256, elliptic.P384} //nolint:gochecknoglobals
+// P521 is offered last but should be offered: some servers will only do
+// ECDHE on secp521r1 and otherwise fall back
+var defaultCurves = []elliptic.Curve{ //nolint:gochecknoglobals
+	elliptic.X25519, elliptic.P256, elliptic.P384, elliptic.P521,
+}
 
 // PSKCallback is called once we have the remote's PSKIdentityHint.
 // If the remote provided none it will be nil
