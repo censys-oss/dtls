@@ -58,6 +58,7 @@ type Curve uint16
 const (
 	P256   Curve = 0x0017
 	P384   Curve = 0x0018
+	P521   Curve = 0x0019
 	X25519 Curve = 0x001d
 )
 
@@ -67,6 +68,8 @@ func (c Curve) String() string {
 		return "P-256"
 	case P384:
 		return "P-384"
+	case P521:
+		return "P-521"
 	case X25519:
 		return "X25519"
 	}
@@ -79,6 +82,7 @@ func Curves() map[Curve]bool {
 		X25519: true,
 		P256:   true,
 		P384:   true,
+		P521:   true,
 	}
 }
 
@@ -100,6 +104,8 @@ func GenerateKeypair(c Curve) (*Keypair, error) {
 		return ellipticCurveKeypair(P256, elliptic.P256(), elliptic.P256())
 	case P384:
 		return ellipticCurveKeypair(P384, elliptic.P384(), elliptic.P384())
+	case P521:
+		return ellipticCurveKeypair(P521, elliptic.P521(), elliptic.P521())
 	default:
 		return nil, errInvalidNamedCurve
 	}
