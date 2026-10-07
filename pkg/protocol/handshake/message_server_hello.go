@@ -136,7 +136,7 @@ func (m *MessageServerHello) MakeLog() *tls.ServerHello {
 
 	ret.CipherSuite = tls.CipherSuiteID(*m.CipherSuiteID)
 
-	ret.CompressionMethod = uint8(m.CompressionMethod.ID)
+	ret.CompressionMethod = tls.CompressionMethod(m.CompressionMethod.ID)
 
 	for _, anyExt := range m.Extensions {
 		switch e := anyExt.(type) {
